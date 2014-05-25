@@ -2,7 +2,7 @@
 
 > Upgrade your commute, help save the planet and keep more money in your pocket.
 
-The results of our participation in the Hackakl 2014, weekend of ‘hacking for good’.
+[Happy Transport](http://www.happytransport.co.nz) - The results of our participation in the Hackakl 2014, weekend of ‘hacking for good’.
 
 ## Set up
 
