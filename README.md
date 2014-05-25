@@ -9,8 +9,9 @@ The results of our participation in the Hackakl 2014, weekend of ‘hacking for 
 This project is currently running on google app engine, however there are no dependencies apart from python
 libraries, so if you decide to fork our work it should be easy to run anywhere.
 
-If you want to run a version of the software as is visit: http://appengine.google.com, create an account
-and upload with the requirements.txt symlinked.
+If you want to run a version of the software as is visit: http://appengine.google.com, create an account,
+rename the file 'core/settings-example.py' to 'core/settings.py' and supply the relevant variables.
+Finally, upload the app with the modules in requirements.txt symlinked.
 
 ## Project Authors
 
