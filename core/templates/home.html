@@ -1,0 +1,184 @@
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+
+    <div class="page">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12 ">
+                    <p>Most people know they can save money by taking public transport, but the extra cash is only one of the benefits that will improve the way you live and help make the world a better place.</p>
+
+                    <p>Take a few moments to tell us a bit about yourself and your daily commute; We think you'll be pleasantly surprised with the lifestyle wins you can get from walking, then taking the bus or train to work and your contribution to the planet.</p>
+                </div>
+            </div>
+
+            <form class="form-horizontal" role="form" action="{{ url_for('calculate') }}" method="post">
+
+                <fieldset>
+
+                <div class="form-group">
+                    <label for="from" class="col-sm-4 control-label">I live at:</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" value="" name="from" id="from">
+                    </div>
+               </div>
+
+                <div class="form-group">
+                    <label for="to" class="col-sm-4 control-label">I commute to:</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" value="" name="to" id="to">
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <label for="parking" class="col-sm-4 control-label">I spend on parking a day:</label>
+                    <div class="col-sm-8">
+                    <input type="text" value="13" class="form-control" name="parking" id="parking" data-slider-min="0" data-slider-max="60" data-slider-step="1" data-slider-value="13" data-slider-selection="after" data-slider-tooltip="hide">
+                    <span class="indicator">$<span id="parking_value">13</span></span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="days" class="col-sm-4 control-label">Days i go to work each week</label>
+                    <div class="col-sm-8">
+                    <input type="text" value="5" class="form-control" name="days" id="days" data-slider-min="0" data-slider-max="7" data-slider-step="1" data-slider-value="5" data-slider-selection="after" data-slider-tooltip="hide" >
+                    <span class="indicator"><span id="days_value">5</span></span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="days" class="col-sm-4 control-label">Car engine size</label>
+                    <div class="col-sm-8">
+                    <select name="engine_size" id="engine_size" class="form-control" >
+                        <option value="small">Small (up to 1.5 L)</option>
+                        <option value="compact">Compact (1.5 - 2 L)</option>
+                        <option value="medium">Medium (2 - 3.5 L)</option>
+                        <option value="large">Large (More than 3.5 L)</option>
+                    </select>
+                    </div>
+
+                </div>
+
+                <div class="form-group">
+                    <label for="weight" class="col-sm-4 control-label">Weight (kg)</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" value="85" name="weight" id="weight">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="height" class="col-sm-4 control-label">Height (cm)</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" value="171" name="height" id="height">
+                    </div>
+               </div>
+                <button type="submit" class="btn btn-primary submit">Go!</button>
+
+                </fieldset>
+
+            </form>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block script %}
+<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?libraries=places&sensor=true"></script>
+<script>
+$('#parking').slider();
+
+$('#parking').on('slide', function(ev){
+    var parking = $('#parking').val();
+    $('#parking_value').html(parking);
+});
+
+$('#days').slider();
+
+$('#days').on('slide', function(ev){
+    var distance = $('#days').val();
+    $('#days_value').html(distance);
+});
+
+
+var defaultBounds = new google.maps.LatLngBounds(
+    new google.maps.LatLng(-37.429206, 173.814697),
+    new google.maps.LatLng(-36.353914, 175.396729)
+)
+
+// Auto complete
+
+var input = document.getElementById('from');
+
+var searchBox = new google.maps.places.SearchBox(input, {
+    bounds: defaultBounds
+});
+
+var input = document.getElementById('to');
+
+var searchBox = new google.maps.places.SearchBox(input, {
+    bounds: defaultBounds
+});
+
+$('.form-horizontal').bind("keyup keypress", function(e) {
+  var code = e.keyCode || e.which;
+  if (code  == 13) {
+    e.preventDefault();
+    return false;
+  }
+});
+
+
+$('.form-horizontal').bootstrapValidator({
+    message: 'This value is not valid',
+    live: 'submitted',
+    feedbackIcons: {
+        valid: 'glyphicon glyphicon-ok',
+        invalid: 'glyphicon glyphicon-remove',
+        validating: 'glyphicon glyphicon-refresh'
+    },
+    fields: {
+        to: {
+            message: 'The username is not valid',
+            validators: {
+                notEmpty: {
+                    message: 'This field is required and cannot be empty'
+                }
+            }
+        },
+        from: {
+            validators: {
+                notEmpty: {
+                    message: 'This field is required and cannot be empty'
+                }
+            }
+        },
+        weight: {
+            validators: {
+                notEmpty: {
+                    message: 'This field is required and cannot be empty'
+                },
+                digits:{
+                    message: 'This field must be a whole digit'
+                }
+            }
+        },
+        height: {
+            validators: {
+                notEmpty: {
+                    message: 'This field is required and cannot be empty'
+                },
+                digits:{
+                    message: 'This field must be a whole digit'
+                }
+            }
+        }
+    }
+});
+
+</script>
+{% endblock %}
+
+

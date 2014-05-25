@@ -1,0 +1,70 @@
+html, body{ background: #f7f7f7; font: 112.5% 'Source Sans Pro', sans-serif; font-weight: 400; }
+
+h1, h2, h3, h4 ,h5, h6{ }
+
+h1{ font-weight: 600;}
+
+fieldset{ padding:30px 0; }
+
+.header, .page, .footer{  padding: 30px; }
+/*.header { padding: 15px; }*/
+
+.jumbotron { background: #b1d7bc; border:#b3e3c0; color:#FFF;}
+.btn-primary, .slider-handle { background: #30513a; }
+.btn-primary:hover, .btn-primary:active, .btn-primary:focus{ background: #b1d7bc; }
+ 
+.container-fluid, .container{ width:1000px; }
+.container-fluid{ max-width: 100%; }
+
+.jumbotron { color: #30513a; margin-bottom:0; }
+.jumbotron h1 { font-weight: 900; }
+.jumbotron p { font-size: 112.5%; }
+
+.top-promo{ padding:30px inherit; }
+
+.form-group{ border-bottom: 1px solid #E5E5E5; padding: 15px 0; margin:0;}
+
+.form-horizontal .control-label { padding-top:0; }
+
+.indicator{  font-weight:300; font-size: 133.3%; float:right; margin:0 20px; }
+
+.help-block{ font-size: 87.5%; font-weight:300; font-style: italic; padding: 15px; text-align: center; margin: 0; }
+
+.btn{ border:none; border-radius:2px; }
+
+.submit{ font-size: 112.5%; padding:15px; width:200px; margin:30px auto; display: block;}
+
+.congratulations { text-align: center; padding-bottom: 30px; }
+.congratulations h1 { font-size: 233.3%; text-align: center; }
+
+.congratulations span, .savings span, .savetime span, .excercise span, .saveplanet span{ font-size: 133.3%; }
+.congratulations, .savings , .savetime , .excercise , .saveplanet, .share, .notes { padding:30px;  }
+
+.congratulations { background:#E5E5E5;  }
+.savings {   }
+.savetime { background:#E5E5E5;  }
+.excercise {   }
+.saveplanet { background:#B1D7BC; }
+.share {   }
+.notes { background:#E5E5E5; font-size:75.0%; padding-bottom: 60px; }
+.notes a { color:#333333; }
+
+.savings img, .savetime img, .excercise img, .saveplanet img { margin: 30px auto; min-width: 20%; display: block; }
+
+.nicethings{ padding-top:15px; margin-top: 15px; border-top: 1px solid #E5E5E5;  }
+.nicethings h2{ text-align: center; }
+.circle { display:inline-block; width: 70px; height: 70px; color: #FFF; padding:20px 0; font-size: 112.5%; background: #30513a; -moz-border-radius: 70px; -webkit-border-radius: 70px; border-radius: 70px; text-align: center; }
+.nicethings span{ font-size: 80%; padding:0 10px; display: inline; }
+
+.savetime h1 { text-align: center; }
+
+.share{ text-align: center; }
+.share .svg { margin: 30px auto; min-width: 20%; display: block; height: 100px; }
+.share a path { fill:#30513a; }
+.share a:hover path { fill:#b1d7bc; }
+
+.footer{ background:#222222; color:#666666; font-size:75.0%; line-height: 58px; }
+.footer p { margin:0; }
+.footer .right { text-align: right; }
+.footer .right p { display: inline; }
+.footer .right img {  max-width: 25%; display: inline; margin-top: -4px; }

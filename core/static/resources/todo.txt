@@ -1,5 +1,0 @@
-bookmark
-tablesort
-loader
-
-https://github.com/gorillamania/repo-health

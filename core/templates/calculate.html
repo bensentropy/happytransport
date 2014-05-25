@@ -1,0 +1,264 @@
+{% extends 'base.html' %}
+
+{% block title %}Your results{% endblock %}
+
+{% block content %}
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&appId=151189921594443&version=v2.0";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+<div class="congratulations">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+
+                <h1>Congratulations</h1>
+                <p>We reckon there's some big wins you can get from leaving the car at home and taking public transport.</p>
+
+            </div>
+         </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel-group" id="accordion">
+                  <div class="panel panel-default">
+                    <div class="panel-heading">
+                      <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+                              See the route we used to calculate your results.
+                        </a>
+                      </h4>
+                    </div>
+                    <div id="collapseOne" class="panel-collapse collapse">
+                      <div class="panel-body">
+                          <p>
+                              We calculated the best PT route for you and the benefits you can get from taking it:
+                          </p>
+                          <p>
+                              {{ instructions|safe }}
+                          </p>
+                    </div>
+                  </div>
+                  </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="savings">
+    <div class="container-fluid">
+        <div class="row">
+
+            <div class="col-md-4 ">
+                <img src="static/images/save.svg"/>
+            </div>
+
+            <div class="col-md-8 ">
+                <h1>Extra money in the pocket</h1>
+                <p>Over the course of the year, you'll save:</p>
+                <h2><span>{{ yearly_money_savings['total_amount'] }}</span></h2>
+            </div>
+
+        </div>
+
+        <div class="row nicethings">
+            <div class="row">
+                <div class="col-md-12 ">
+                <h2>That's enough for:</h2>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="circle">{{ yearly_money_savings['coffees_each_week'] }}</div>
+                <span>Coffees a week</span>
+            </div>
+            <div class="col-md-3">
+                <div class="circle">{{ yearly_money_savings['hamburger_combos_total'] }}</div>
+                <span>Hamburgers</span>
+            </div>
+            <div class="col-md-3">
+                <div class="circle">{{ yearly_money_savings['iphones_total'] }}</div>
+                <span>Apple iPhones</span>
+            </div>
+            <div class="col-md-3">
+                <div class="circle">{{ yearly_money_savings['ps4_total'] }}</div>
+                <span>PS4 Consoles</span>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+<div class="savetime">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12 ">
+
+                <h1>More time to play</h1>
+
+                <div class="row">
+                    <div class="col-sml-4 col-md-4 ">
+                        <img src="static/images/chat.svg"/>
+                    </div>
+                    <div class="col-sml-4 col-md-4 ">
+                        <img src="static/images/read.svg"/>
+                    </div>
+                    <div class="col-sml-4 col-md-4 ">
+                        <img src="static/images/shop.svg"/>
+                    </div>
+                </div>
+
+
+
+                <p>Based on those figures you're spending <span>{{ time_use_benefits['yearly_car_use_hours'] }}</span> hours in the car every year! That's <span>{{ time_use_benefits['yearly_car_use_hours'] }}</span> hours you could spend in public transport reading a book, playing games, or catching up with friends online or on the phone. </p>
+
+                <p>Your public transport commute takes around <span>{{ time_use_benefits['pt_one_way_commute_minutes'] }}</span>  minutes per day each way. Over the year, you could read around <span>{{ time_use_benefits['books_read'] }}</span> books in that time.</p>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="excercise">
+    <div class="container-fluid">
+        <div class="row">
+
+                <div class="col-md-4 ">
+                    <img src="static/images/excercise.svg"/>
+                </div>
+
+                <div class="col-md-8 ">
+                    <h1>Getting in shape</h1>
+                    <p>Health experts recommend 10000 steps per day to keep in shape. On your commute, you'll walk a respectable <span>{{ health_benefits['steps'] }}</span> steps per day. That's <span>{{ health_benefits['steps_percent_target'] }}</span> of your daily requirement!</p>
+                    <p>If you're looking to stay in shape, you'll be pleased to know your commute burns an estimated <span>{{ health_benefits['cals_burned'] }}</span> calories.</p>
+                </div>
+
+         </div>
+    </div>
+</div>
+
+<div class="saveplanet">
+    <div class="container-fluid">
+        <div class="row">
+                <div class="col-md-8 ">
+                    <h1>Saving the planet</h1>
+
+                    <p>By opting to take public transport for your commute, you cut <span>{{ environmental_benefits['carbon_emissions_tonne'] }}</span>  tonnes of carbon emissions. That’s an amount you’d need to plant <span>{{ environmental_benefits['carbon_emissions_trees'] }}</span> native trees to offset, and has a social cost of around <span>{{ environmental_benefits['carbon_emissions_social_cost'] }}</span>. You’ll also cut <span>{{ environmental_benefits['particle_emissions_car_grams'] }}</span>  grams of particle emissions, which will make our city’s air cleaner to breathe.</p>
+                    <p>The average kiwi produces a whopping 7.8 tonnes of carbon emissions every year. For healthier planet we need to find ways to get this down by at least 20 per cent.  If every New Zealander cuts emissions like you can on public transport, we’ll be well on our way to a better planet!</p>
+
+                </div>
+
+                <div class="col-md-4 ">
+                    <img src="static/images/nature.svg"/>
+                </div>
+        </div>
+    </div>
+</div>
+
+        <div class="share">
+        <div class="container-fluid">
+            <div class="row">
+                    <div class="col-md-12 ">
+                        <h1>Share this with your pals!</h1>
+                        <p>Let your friends know the benefits of using public transport and encourage them to save time and money too!</p>
+                    </div>
+            </div>
+            <div class="row">
+                    <div class="col-md-6">
+                        <a href="https://facebook.com"><img class="svg" src="static/images/facebook.svg"/></a>
+                    </div>
+                    <div class="col-md-6">
+                        <a href="https://twitter.com"><img class="svg" src="static/images/twitter.svg"/></a>
+                    </div>
+            </div>
+        </div>
+    </div>
+
+{#<div class="container">#}
+{#    <h3>Share your results with your friends</h3>#}
+{##}
+{#    <p>#}
+{#        <div class="fb-share-button" data-href="http://happytransportnz.appspot.com/" data-width="30" data-type="box_count"></div>#}
+{##}
+{#        <a href="https://twitter.com/home?status=I%20save%20$xxxx,%20cut%20x.y%20tons%20CO2%20emissions,%20get%20xx%25%20of%20my%20daily%20exercise%20needs%20by%20taking%20PT.%20What%20about%20you?%20http://is.gd/aklzoom">Share on Twitter</a>#}
+{##}
+{#    </p>#}
+{#</div>#}
+
+<div class="notes">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12 ">
+                <h4>Notes:</h4>
+                <p>While every care has been exercised in compiling and publishing the data contained here, accepts no responsibility for errors or omissions to of the information.</p>
+
+                <p>The sources of information are listed below:</p>
+                <ul>
+                <li><a href="http://www.ird.govt.nz/business-income-tax/expenses/mileage-rates/">IRD Milage rates</a></li>
+                <li><a href="http://air.nzta.govt.nz/vehicle-emissions-prediction-model">Vehicle Emission Prediction Model (NZTA)</a></li>
+                <li><a href="http://www.nature.com/nclimate/journal/v4/n4/full/nclimate2135.html">Social cost of carbon emissions.</a></li>
+                <li><a href="http://carbon4good.yolasite.com/why-plant-trees.php">Carbon emissions offset estimate</a></li>
+                <li><a href="http://www.nhs.uk/Livewell/loseweight/Pages/10000stepschallenge.aspx">Weight loss estimates.</a></li>
+                <li><a href="http://www.livestrong.com/article/18303-calculate-calories-burned/">Calories burned calculator.</a></li>
+                <li><a href="http://www.goodreads.com/poll/show/48965-reading-non-stop-how-long-does-it-take-you-to-read-a-300-page-book">Reading speed.</a></li>
+                <li><a href="http://pricespy.co.nz/">Consumer electronics costs.</a></li>
+                <li><a href="http://www.digitalbookworld.com/2014/average-price-of-ebook-best-sellers-jumps-divergent-dominance-continues/">Amazon Ebook costs.</a></li>
+                <li><a href="https://mcdonalds.co.nz/menu">Hamburger costs.</a></li>
+                <li><a href="https://docs.google.com/document/d/1_nv7G5C7yDebYdjRKPyecdxzHs6qm_SmJLImaNr-Cvo/pub">Detailed method.</a></li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block script %}
+
+<script>
+
+/*
+ * Replace all SVG images with inline SVG
+ */
+    jQuery('img.svg').each(function(){
+        var $img = jQuery(this);
+        var imgID = $img.attr('id');
+        var imgClass = $img.attr('class');
+        var imgURL = $img.attr('src');
+
+        jQuery.get(imgURL, function(data) {
+            // Get the SVG tag, ignore the rest
+            var $svg = jQuery(data).find('svg');
+
+            // Add replaced image's ID to the new SVG
+            if(typeof imgID !== 'undefined') {
+                $svg = $svg.attr('id', imgID);
+            }
+            // Add replaced image's classes to the new SVG
+            if(typeof imgClass !== 'undefined') {
+                $svg = $svg.attr('class', imgClass+' replaced-svg');
+            }
+
+            // Remove any invalid XML tags as per http://validator.w3.org
+            $svg = $svg.removeAttr('xmlns:a');
+
+            // Replace image with new SVG
+            $img.replaceWith($svg);
+
+        }, 'xml');
+
+    });
+
+</script>
+{% endblock %}

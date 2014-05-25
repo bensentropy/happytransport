@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% block title %}Home{% endblock %} - Happy Traveller</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+        <link href="/static/css/style.css" rel="stylesheet">
+        <link href="/static/css/slider.css" rel="stylesheet">
+        <link href="/static/css/bootstrapValidator.css" rel="stylesheet">
+    </head>
+    <body>
+    <div class="header jumbotron">
+      <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>Happy Traveller</h1>
+                <p>Upgrade your commute, help save the planet and keep more money in your pocket.</p>
+            </div>
+        </div>
+      </div>
+    </div>
+
+    {% block content %}
+
+    {% endblock %}
+    <div class="footer">
+        <div class="container-fluid">
+            <footer>
+                <div class="row">
+                    <div class="col-md-6">
+                        <p>&copy; Happy Transport Team 2014</p>
+                    </div>
+                    <div class="col-md-6 right">
+                        <p>Download the source:</p><a href="#"><img alt="GitHub" src="static/images/GitHub_Logo.png"></a>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+
+    <script src="//code.jquery.com/jquery-1.10.1.min.js"></script>
+    <script>window.jQuery || document.write('<script src="/static/js/jquery-1.10.1.min.js">\x3C/script>')</script>
+
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+    <script src="/static/js/bootstrap-slider.js"></script>
+    <script src="/static/js/bootstrapValidator.js"></script>
+    <script src="/static/js/validator/notEmpty.js"></script>
+    <script src="/static/js/validator/digits.js"></script>
+
+    {% block script %}
+    {% endblock %}
+    </body>
+</html>

@@ -10,5 +10,8 @@ builtins:
 
 handlers:
 
+- url: /static
+  static_dir: core/static
+
 - url: .*
   script: core.app
