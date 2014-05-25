@@ -3,7 +3,7 @@ import math
 """
 Created on Sat May 24 12:15:24 2014
 
-@author: ben
+@author: ben smith
 """
 
 class HappyTravellerMetricsBS(object):

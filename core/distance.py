@@ -1,3 +1,8 @@
+"""
+Created on Sat May 24 12:15:24 2014
+
+@author: Yong Ly
+"""
 import json
 import requests
  
@@ -173,7 +178,7 @@ def get_output(origin, destination, arrival_time):
     results['cost'] = CYCLING_COST_FACTOR * (float(results['distance'])/1000)   #Calculate    
     results['instructions'] = get_directions(google_output) 
     output['bicycling'] = results
-    return output 
+    return output
  
 if __name__ == "__main__":
     # travel mode. values can be: 'transit', 'driving', 'walking', 'bicycling'
